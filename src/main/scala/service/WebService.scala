@@ -2,7 +2,7 @@ package service
 
 import org.scalatra._
 
-class PhoneBookWebService extends ScalatraServlet {
+class WebService extends ScalatraServlet {
   // Enable CORS headers for all responses
   before() {
     response.setHeader("Access-Control-Allow-Origin", "*")
