@@ -1,6 +1,9 @@
-import javax.servlet.Servlet
+package service
+
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.webapp.WebAppContext
+
+import javax.servlet.Servlet
 
 object WebServiceBuilder {
   def buildWebService(port: Integer, webServiceClass: Class[_ <: Servlet]): Server = {
