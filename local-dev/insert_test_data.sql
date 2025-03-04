@@ -1,0 +1,22 @@
+-- Random dummy contacts for testing purposes
+INSERT INTO contacts (first_name, last_name, phone_number, email, address)
+VALUES ('Matti', 'Virtanen', '+358401234001', 'matti.virtanen@example.fi', 'Esimerkki 1, Helsinki, Finland'),
+       ('Anna', 'Mäkinen', '+358401234002', 'anna.makinen@example.fi', 'Esimerkki 2, Espoo, Finland'),
+       ('Timo', 'Nieminen', '+358401234003', 'timo.nieminen@example.fi', 'Esimerkki 3, Tampere, Finland'),
+       ('Leena', 'Keskinen', '+358401234004', 'leena.keskinen@example.fi', 'Esimerkki 4, Vantaa, Finland'),
+       ('Jari', 'Heikkinen', '+358401234005', 'jari.heikkinen@example.fi', 'Esimerkki 5, Oulu, Finland'),
+       ('Kaisa', 'Korhonen', '+358401234006', 'kaisa.korhonen@example.fi', 'Esimerkki 6, Turku, Finland'),
+       ('Pekka', 'Laine', '+358401234007', 'pekka.laine@example.fi', 'Esimerkki 7, Jyväskylä, Finland'),
+       ('Sari', 'Saarinen', '+358401234008', 'sari.saarinen@example.fi', 'Esimerkki 8, Kuopio, Finland'),
+       ('Antti', 'Salminen', '+358401234009', 'antti.salminen@example.fi', 'Esimerkki 9, Lahti, Finland'),
+       ('Riitta', 'Rantanen', '+358401234010', 'riitta.rantanen@example.fi', 'Esimerkki 10, Pori, Finland'),
+       ('Jukka', 'Lehtinen', '+358401234011', 'jukka.lehtinen@example.fi', 'Esimerkki 11, Kouvola, Finland'),
+       ('Minna', 'Virtanen', '+358401234012', 'minna.virtanen@example.fi', 'Esimerkki 12, Joensuu, Finland'),
+       ('Eero', 'Järvinen', '+358401234013', 'eero.jarvinen@example.fi', 'Esimerkki 13, Lappeenranta, Finland'),
+       ('Marja', 'Hämäläinen', '+358401234014', 'marja.hamalainen@example.fi', 'Esimerkki 14, Hämeenlinna, Finland'),
+       ('Marko', 'Koskinen', '+358401234015', 'marko.koskinen@example.fi', 'Esimerkki 15, Vaasa, Finland'),
+       ('Tiina', 'Seppälä', '+358401234016', 'tiina.seppala@example.fi', 'Esimerkki 16, Rovaniemi, Finland'),
+       ('Ville', 'Pulkkinen', '+358401234017', 'ville.pulkkinen@example.fi', 'Esimerkki 17, Seinäjoki, Finland'),
+       ('Elina', 'Aalto', '+358401234018', 'elina.aalto@example.fi', 'Esimerkki 18, Mikkeli, Finland'),
+       ('Mikko', 'Peltonen', '+358401234019', 'mikko.peltonen@example.fi', 'Esimerkki 19, Kotka, Finland'),
+       ('Laura', 'Oksanen', '+358401234020', 'laura.oksanen@example.fi', 'Esimerkki 20, Salo, Finland');
