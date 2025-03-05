@@ -18,8 +18,9 @@ class PhoneBookService {
     contacts
   }
 
-  def deleteContactsByIds(idsToDelete: Set[Int]) = {
-    ???
+  def deleteContactsByIds(idsToDelete: Set[Int]): Unit = {
+    val deletedContactCount = PhoneBookDAO.deleteByIds(idsToDelete)
+    println(s"Deleted ${deletedContactCount} contacts from database")
   }
 
   def addContact(contact: Contact) = {

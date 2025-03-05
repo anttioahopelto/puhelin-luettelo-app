@@ -17,4 +17,16 @@ object PhoneBookDAO {
       )).list.apply()
     }
   }
+
+  def deleteByIds(ids: Set[Int]): Int = {
+    val deletedRowCount = DB.localTx { implicit session =>
+      sql"""
+        DELETE FROM contacts
+        WHERE id IN (${ids.toSeq})
+      """.update.apply()
+    }
+
+    deletedRowCount
+  }
+
 }
