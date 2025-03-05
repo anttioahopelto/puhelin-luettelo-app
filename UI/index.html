@@ -7,8 +7,30 @@
 </head>
 <body>
 <h1>Phonebook</h1>
+<button onclick="showAddContactForm()">Add Contact</button>
 <button onclick="deleteSelectedContacts()">Delete selected contacts</button>
 <div id="response"></div>
+
+<div id="addContactForm" style="display: none;">
+    <h2>Add Contact</h2>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName">
+    <br>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName">
+    <br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber">
+    <br>
+    <label for="email">Email:</label>
+    <input type="text" id="email">
+    <br>
+    <label for="address">Address:</label>
+    <input type="text" id="address">
+    <br>
+    <button onclick="addContact()">Add Contact</button>
+    <button onclick="hideAddContactForm()">Cancel</button>
+</div>
 
 <script src="phoneBookApp.js"></script>
 <script>

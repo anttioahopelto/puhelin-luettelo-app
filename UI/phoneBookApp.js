@@ -1,5 +1,6 @@
 const apiBaseUrl = 'http://localhost:8080/contacts';
 const apiDeleteUrl = 'http://localhost:8080/deleteByIds';
+const apiAddUrl = 'http://localhost:8080/addContact';
 
 async function fetchContacts() {
     try {
@@ -52,6 +53,50 @@ async function deleteSelectedContacts() {
             await fetchContacts();
         } else {
             document.getElementById('response').innerText = 'Failed to delete contacts';
+        }
+    } catch (error) {
+        document.getElementById('response').innerText = 'Error: ' + error.message;
+    }
+}
+
+function showAddContactForm() {
+    document.getElementById('addContactForm').style.display = 'block';
+}
+
+function hideAddContactForm() {
+    document.getElementById('addContactForm').style.display = 'none';
+}
+
+async function addContact() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+
+    const newContact = {
+        firstName,
+        lastName,
+        phoneNumber,
+        email,
+        address
+    };
+
+    try {
+        const response = await fetch(apiAddUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newContact)
+        });
+
+        if (response.ok) {
+            alert('Contact added successfully');
+            hideAddContactForm();
+            await fetchContacts();
+        } else {
+            document.getElementById('response').innerText = 'Failed to add contact';
         }
     } catch (error) {
         document.getElementById('response').innerText = 'Error: ' + error.message;
