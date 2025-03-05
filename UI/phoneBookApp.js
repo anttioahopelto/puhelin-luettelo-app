@@ -1,6 +1,6 @@
-const apiBaseUrl = 'http://localhost:8080';
+const apiBaseUrl = 'http://localhost:8080/contacts';
 
-async function fetchMessage() {
+async function fetchContacts() {
     try {
         const response = await fetch(apiBaseUrl);
         if (response.ok) {
