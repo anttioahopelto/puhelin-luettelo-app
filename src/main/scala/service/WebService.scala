@@ -1,5 +1,6 @@
 package service
 
+import org.json4s.jackson.Serialization
 import org.scalatra._
 
 class WebService extends ScalatraServlet {
@@ -10,7 +11,12 @@ class WebService extends ScalatraServlet {
     response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
   }
 
-  get("/") {
-    "Get-testi"
+  val phoneBookService = new PhoneBookService
+
+  get("/contacts") {
+    val contacts =  phoneBookService.getAllContacts
+    val contactsJson = Serialization.write(contacts)(Contact.formats)
+    println(contactsJson)
+    contactsJson
   }
 }
