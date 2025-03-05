@@ -29,4 +29,13 @@ object PhoneBookDAO {
     deletedRowCount
   }
 
+  def insertContact(contact: Contact): Int = {
+    DB.localTx { implicit session =>
+      val id = sql"""
+        INSERT INTO contacts (first_name, last_name, phone_number, email, address)
+        VALUES (${contact.firstName}, ${contact.lastName}, ${contact.phoneNumber}, ${contact.email}, ${contact.address})
+      """.updateAndReturnGeneratedKey.apply().toInt
+      id
+    }
+  }
 }
