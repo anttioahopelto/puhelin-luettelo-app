@@ -14,9 +14,16 @@ class WebService extends ScalatraServlet {
   val phoneBookService = new PhoneBookService
 
   get("/contacts") {
-    val contacts =  phoneBookService.getAllContacts
-    val contactsJson = Serialization.write(contacts)(Contact.formats)
-    println(contactsJson)
-    contactsJson
+    println("Received request to /contacts")
+    try {
+      val contacts = phoneBookService.getAllContacts
+      val contactsJson = Serialization.write(contacts)(Contact.formats)
+      println(contactsJson)
+      contactsJson
+    } catch {
+      case e: Exception =>
+        println(e.getMessage)
+        halt(500, "Internal Server Error")
+    }
   }
 }
