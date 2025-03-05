@@ -18,7 +18,7 @@ async function fetchContacts() {
 
 function createTable(contacts) {
     let table = '<table border="1">';
-    table += '<tr><th>Select</th><th>ID</th><th>First Name</th><th>Last Name</th><th>Phone Number</th><th>Email</th><th>Address</th></tr>';
+    table += '<tr><th>Select</th><th>ID</th><th>First Name</th><th>Last Name></th><th>Phone Number></th><th>Email></th><th>Address></th></tr>';
     contacts.forEach(contact => {
         table += `<tr>
                     <td><input type="checkbox" class="contactCheckbox" value="${contact.id}"></td>
@@ -60,11 +60,13 @@ async function deleteSelectedContacts() {
 }
 
 function showAddContactForm() {
-    document.getElementById('addContactForm').style.display = 'block';
+    const modal = document.getElementById('addContactModal');
+    modal.style.display = 'block';
 }
 
-function hideAddContactForm() {
-    document.getElementById('addContactForm').style.display = 'none';
+function closeAddContactForm() {
+    const modal = document.getElementById('addContactModal');
+    modal.style.display = 'none';
 }
 
 async function addContact() {
@@ -93,7 +95,7 @@ async function addContact() {
 
         if (response.ok) {
             alert('Contact added successfully');
-            hideAddContactForm();
+            closeAddContactForm();
             await fetchContacts();
         } else {
             document.getElementById('response').innerText = 'Failed to add contact';
