@@ -34,7 +34,6 @@ class WebService extends ScalatraServlet with JacksonJsonSupport {
     try {
       val contacts = phoneBookService.getAllContacts
       val contactsJson = Serialization.write(contacts)(Contact.formats)
-      println(contactsJson)
       contactsJson
     } catch {
       case e: Exception =>
@@ -49,7 +48,6 @@ class WebService extends ScalatraServlet with JacksonJsonSupport {
       val deleteRequest = parsedBody.extract[DeleteRequest]
       val deletedCount = phoneBookService.deleteContactsByIds(deleteRequest.ids)
       val responseJson = Serialization.write(Map("deletedCount" -> deletedCount))
-      println(responseJson)
       responseJson
     } catch {
       case e: Exception =>
@@ -64,7 +62,6 @@ class WebService extends ScalatraServlet with JacksonJsonSupport {
       val contact = parsedBody.extract[IncomingContact]
       val newContactId = phoneBookService.addContact(contact)
       val responseJson = Serialization.write(Map("newContactId" -> newContactId))
-      println(responseJson)
       responseJson
     } catch {
       case e: Exception =>
