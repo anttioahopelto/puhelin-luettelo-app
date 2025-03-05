@@ -6,10 +6,15 @@
     <title>Simple API Test</title>
 </head>
 <body>
-<h1>API Test</h1>
-<button onclick="fetchContacts()">Get all contacts</button>
-<p id="response"></p>
+<h1>Phonebook</h1>
+<button onclick="deleteSelectedContacts()">Delete selected contacts</button>
+<div id="response"></div>
 
 <script src="phoneBookApp.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        fetchContacts();
+    });
+</script>
 </body>
 </html>
