@@ -4,6 +4,8 @@ import dao.PhoneBookDAO
 import org.json4s.{DefaultFormats, Formats}
 
 case class Contact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: Option[String], address: Option[String])
+case class IncomingContact(firstName: String, lastName: String, phoneNumber: String, email: Option[String], address: Option[String])
+
 
 object Contact {
   implicit val formats: Formats = DefaultFormats
@@ -24,7 +26,7 @@ class PhoneBookService {
     deletedContactCount
   }
 
-  def addContact(contact: Contact): Int = {
+  def addContact(contact: IncomingContact): Int = {
     val contactId = PhoneBookDAO.insertContact(contact)
     println(s"Added contact to database with ID: $contactId")
     contactId

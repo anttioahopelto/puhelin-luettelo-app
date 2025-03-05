@@ -1,7 +1,7 @@
 package dao
 
 import scalikejdbc.{DB, scalikejdbcSQLInterpolationImplicitDef}
-import service.Contact
+import service.{Contact, IncomingContact}
 
 object PhoneBookDAO {
 
@@ -29,7 +29,7 @@ object PhoneBookDAO {
     deletedRowCount
   }
 
-  def insertContact(contact: Contact): Int = {
+  def insertContact(contact: IncomingContact): Int = {
     DB.localTx { implicit session =>
       val id = sql"""
         INSERT INTO contacts (first_name, last_name, phone_number, email, address)

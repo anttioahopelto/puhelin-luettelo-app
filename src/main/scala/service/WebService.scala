@@ -57,4 +57,19 @@ class WebService extends ScalatraServlet with JacksonJsonSupport {
         halt(500, "Internal Server Error")
     }
   }
+
+  post("/addContact") {
+    println("Received request to /addContact")
+    try {
+      val contact = parsedBody.extract[IncomingContact]
+      val newContactId = phoneBookService.addContact(contact)
+      val responseJson = Serialization.write(Map("newContactId" -> newContactId))
+      println(responseJson)
+      responseJson
+    } catch {
+      case e: Exception =>
+        println(e.getMessage)
+        halt(500, "Internal Server Error")
+    }
+  }
 }
