@@ -9,5 +9,6 @@ libraryDependencies ++= Seq(
   "org.eclipse.jetty" % "jetty-webapp" % "9.2.30.v20200428",
   "org.scalikejdbc" %% "scalikejdbc" % "3.4.2",
   "org.scalikejdbc" %% "scalikejdbc-config" % "3.4.2",
-  "org.json4s"   %% "json4s-jackson" % "3.6.12"
+  "org.json4s"   %% "json4s-jackson" % "3.6.12",
+  "org.postgresql" % "postgresql" % "42.2.18"
 )
