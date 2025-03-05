@@ -2,6 +2,10 @@ const apiBaseUrl = 'http://localhost:8080/contacts';
 const apiDeleteUrl = 'http://localhost:8080/deleteByIds';
 const apiAddUrl = 'http://localhost:8080/addContact';
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchContacts();
+});
+
 async function fetchContacts() {
     try {
         const response = await fetch(apiBaseUrl);
