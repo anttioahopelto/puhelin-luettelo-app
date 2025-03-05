@@ -51,6 +51,12 @@ button.btn:hover {
     background-color: #0056b3;
 }
 
+button.btn:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

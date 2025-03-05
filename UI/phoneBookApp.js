@@ -12,6 +12,7 @@ async function fetchContacts() {
         if (response.ok) {
             const contacts = await response.json();
             document.getElementById('response').innerHTML = createTable(contacts);
+            setupCheckboxListeners();
         } else {
             document.getElementById('response').innerText = 'Failed to fetch contacts';
         }
@@ -25,7 +26,7 @@ function createTable(contacts) {
     table += '<tr><th>Select</th><th>ID</th><th>First Name</th><th>Last Name></th><th>Phone Number></th><th>Email></th><th>Address></th></tr>';
     contacts.forEach(contact => {
         table += `<tr>
-                    <td><input type="checkbox" class="contactCheckbox" value="${contact.id}"></td>
+                    <td><input type="checkbox" class="contactCheckbox" value="${contact.id}" onclick="toggleDeleteButton()"></td>
                     <td>${contact.id}</td>
                     <td>${contact.firstName}</td>
                     <td>${contact.lastName}</td>
@@ -36,6 +37,19 @@ function createTable(contacts) {
     });
     table += '</table>';
     return table;
+}
+
+function setupCheckboxListeners() {
+    const checkboxes = document.querySelectorAll('.contactCheckbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', toggleDeleteButton);
+    });
+}
+
+function toggleDeleteButton() {
+    const selectedCheckboxes = document.querySelectorAll('.contactCheckbox:checked');
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.disabled = selectedCheckboxes.length === 0;
 }
 
 async function deleteSelectedContacts() {
