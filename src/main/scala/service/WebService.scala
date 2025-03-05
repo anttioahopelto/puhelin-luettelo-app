@@ -1,15 +1,31 @@
 package service
 
+import org.json4s.{DefaultFormats, Formats}
 import org.json4s.jackson.Serialization
 import org.scalatra._
+import org.scalatra.json.JacksonJsonSupport
 
-class WebService extends ScalatraServlet {
+case class DeleteRequest(ids: Set[Int])
+object DeleteRequest {
+  implicit val formats: Formats = DefaultFormats
+}
+
+class WebService extends ScalatraServlet with JacksonJsonSupport {
   // Enable CORS headers for all responses
   before() {
     response.setHeader("Access-Control-Allow-Origin", "*")
     response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
     response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
   }
+
+  options("/*") {
+    response.setHeader("Access-Control-Allow-Origin", "*")
+    response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
+    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+  }
+
+  // Enable JSON requests and responses
+  protected implicit val jsonFormats: Formats = DefaultFormats
 
   val phoneBookService = new PhoneBookService
 
@@ -20,6 +36,21 @@ class WebService extends ScalatraServlet {
       val contactsJson = Serialization.write(contacts)(Contact.formats)
       println(contactsJson)
       contactsJson
+    } catch {
+      case e: Exception =>
+        println(e.getMessage)
+        halt(500, "Internal Server Error")
+    }
+  }
+
+  post("/deleteByIds") {
+    println("Received request to /deleteByIds")
+    try {
+      val deleteRequest = parsedBody.extract[DeleteRequest]
+      val deletedCount = phoneBookService.deleteContactsByIds(deleteRequest.ids)
+      val responseJson = Serialization.write(Map("deletedCount" -> deletedCount))
+      println(responseJson)
+      responseJson
     } catch {
       case e: Exception =>
         println(e.getMessage)
