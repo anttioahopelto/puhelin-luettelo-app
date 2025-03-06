@@ -11,20 +11,7 @@ object DeleteRequest {
 }
 
 class WebService extends ScalatraServlet with JacksonJsonSupport {
-  // Enable CORS headers for all responses
-  before() {
-    response.setHeader("Access-Control-Allow-Origin", "*")
-    response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
-    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
-  }
 
-  options("/*") {
-    response.setHeader("Access-Control-Allow-Origin", "*")
-    response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
-    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
-  }
-
-  // Enable JSON requests and responses
   protected implicit val jsonFormats: Formats = DefaultFormats
 
   val phoneBookService = new PhoneBookService
