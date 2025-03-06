@@ -1,6 +1,6 @@
-const apiBaseUrl = 'http://localhost:8080/contacts';
-const apiDeleteUrl = 'http://localhost:8080/deleteByIds';
-const apiAddUrl = 'http://localhost:8080/addContact';
+const apiBaseUrl = 'http://localhost:8080/api/contacts';
+const apiDeleteUrl = 'http://localhost:8080/api/deleteByIds';
+const apiAddUrl = 'http://localhost:8080/api/addContact';
 
 document.addEventListener('DOMContentLoaded', (event) => {
     fetchContacts();
