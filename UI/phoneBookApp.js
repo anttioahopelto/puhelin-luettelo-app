@@ -23,7 +23,7 @@ async function fetchContacts() {
 
 function createTable(contacts) {
     let table = '<table border="1">';
-    table += '<tr><th>Select</th><th>ID</th><th>First Name</th><th>Last Name></th><th>Phone Number></th><th>Email></th><th>Address></th></tr>';
+    table += '<tr><th>Select</th><th>ID</th><th>First Name</th><th>Last Name</th><th>Phone Number</th><th>Email</th><th>Address</th></tr>';
     contacts.forEach(contact => {
         table += `<tr>
                     <td><input type="checkbox" class="contactCheckbox" value="${contact.id}" onclick="toggleDeleteButton()"></td>
